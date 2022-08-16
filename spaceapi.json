@@ -1,0 +1,32 @@
+{
+	"api": "0.13",
+	"api_compatibility": [
+		"14"
+	],
+	"space": "Hackerspace Trójmiasto",
+	"logo": "https://hs3.pl/images/logo.png",
+	"url": "https://hs3.pl",
+	"location": {
+		"address": "al. Wojska Polskiego 41, 80-268 Gdańsk, Poland",
+		"lon": 18.58177690847083,
+		"lat": 54.389695172791846
+	},
+	"contact": {
+		"email": "kontakt@hs3.pl",
+		"phone": "+48661691133",
+		"facebook": "https://www.facebook.com/hackerspacetrojmiasto",
+		"twitter": "@hs3city"
+	},
+	"state": {
+		"icon": {
+			"open": "https://hs3.pl/images/sopen.gif",
+			"closed": "https://hs3.pl/images/sopen.gif"
+		},
+		"open": false,
+		"lastchange": 1660565749
+	},
+	"projects": [
+		"https://github.com/hs3city",
+		"https://hs3.pl/projekty/"
+	]
+}

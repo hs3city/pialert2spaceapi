@@ -1,0 +1,10 @@
+[package]
+name = "pialert2spaceapi"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde_json = "1.0"
+sqlite = "0.27.0"
+tokio = { version = "1.20.1", features = ["macros", "rt-multi-thread"] }
+warp = "0.3.2"
