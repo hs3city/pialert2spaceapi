@@ -19,9 +19,7 @@ RUN apt-get update && \
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-
 COPY --from=build /pialert2spaceapi/target/release/pialert2spaceapi .
 COPY spaceapi.json .
 
-# set the startup command to run your binary
 CMD ["./pialert2spaceapi"]

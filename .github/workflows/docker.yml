@@ -20,6 +20,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@v1.0
+        with:
+          swap-size-gb: 10
+      - run: |
+          # Workaround for https://github.com/rust-lang/cargo/issues/8719
+          sudo mkdir -p /var/lib/docker
+          sudo mount -t tmpfs -o size=10G none /var/lib/docker
+          sudo systemctl restart docker
+
       - name: Log in to the Container registry
         uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
         with:
@@ -37,7 +47,7 @@ jobs:
         id: qemu
         uses: docker/setup-qemu-action@v1.0.1
         with:
-          platforms: linux/amd64,linux/arm/v6
+          platforms: linux/amd64,linux/arm/v7
 
       - name: Set up Docker Buildx
         id: buildx
@@ -46,7 +56,7 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
         with:
-          platforms: linux/amd64,linux/arm/v6
+          platforms: linux/amd64,linux/arm/v7
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
