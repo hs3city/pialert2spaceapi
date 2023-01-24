@@ -28,5 +28,8 @@
 	"projects": [
 		"https://github.com/hs3city",
 		"https://hs3.pl/projekty/"
+	],
+	"issue_report_channels": [
+		"email"
 	]
 }

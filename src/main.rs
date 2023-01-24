@@ -1,4 +1,4 @@
-use serde_json::{Value, Number};
+use serde_json::{Value, Number, json};
 use sqlite;
 use warp::Filter;
 
@@ -30,7 +30,11 @@ fn get_status(counter_info: &(String, u16)) -> Value {
     stream.read_to_string(&mut data).unwrap();
     let counts: Value = serde_json::from_str(&data).unwrap();
 
-    v["sensors"]["people_now_present"]["value"] = Value::Number(Number::from(counts["persons"].as_i64().unwrap()));
+    let persons = counts["persons"].as_i64().unwrap();
+    v["sensors"]["people_now_present"] = json!([{"value": Value::Number(Number::from(persons))}]);
+    if persons > 0 {
+        v["state"]["open"] = Value::Bool(true);
+    }
 
     v
 }
